@@ -1,0 +1,40 @@
+name: Release
+
+# Cria a Release com o zip de instalação quando uma tag de versão é enviada:
+#   git tag v1.5 && git push --tags
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes rápidos
+        run: python -m unittest discover -s testes -v
+      - name: Playwright (PDF do manual)
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Montar o pacote
+        run: bash scripts/empacotar.sh
+      - name: Notas da versão
+        run: |
+          V="${GITHUB_REF_NAME#v}"
+          awk -v v="## $V" 'index($0,v)==1{f=1;next} /^## /{f=0} f' CHANGELOG.md > notas.md
+          printf '\n---\n**Instalar:** baixe o `Axtel-v%s.zip`, extraia e dê dois cliques em **Instalar Axtel**. Se faltar o Python, o Axtel instala sozinho.\n' "$V" >> notas.md
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Axtel ${{ github.ref_name }}
+          body_path: notas.md
+          files: dist/Axtel-*.zip

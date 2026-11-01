@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Axtel</title>
+<link rel="stylesheet" href="estilo.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='3' width='10' height='10' fill='%23FF6A2B' transform='skewX(-15)'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="#/"><i></i>AXTEL</a>
+    <a class="spot" id="atalho-spotter" href="#/spotter" aria-label="Spotter de voz: abrir a página do spotter">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
+      <span style="flex:1">Spotter</span><span id="spot-estado" style="font-size:12px;font-weight:700">ligado</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#/" data-rota="inicio">Início</a>
+      <a href="#/jogo" data-rota="jogo">Estatísticas por jogo</a>
+      <a href="#/sessoes" data-rota="sessoes">Sessões</a>
+      <a href="#/calendario" data-rota="calendario">Calendário</a>
+      <a href="#/setups" data-rota="setups">Setups</a>
+      <a href="#/desafios" data-rota="desafios">Desafios e plano</a>
+      <a href="#/anotacoes" data-rota="anotacoes">Anotações <span class="contador" id="nav-pend" hidden>0</span></a>
+      <a href="#/aovivo" data-rota="aovivo">Ao vivo</a>
+      <a href="#/spotter" data-rota="spotter">Spotter</a>
+      <a href="#/config" data-rota="config">Configurações</a>
+    </nav>
+    <div class="indicador" id="indicador">
+      <button class="ind-btn" data-acao="ind-abrir" aria-expanded="false">
+        <span class="ponto" id="ind-ponto"></span>
+        <span class="txt" id="ind-txt">Conectando…</span>
+        <span class="contador" id="ind-cont" hidden>0</span>
+      </button>
+      <div class="ind-painel" id="ind-painel" hidden></div>
+    </div>
+    <div class="rodape" id="rodape">Axtel</div>
+  </aside>
+  <main id="conteudo"><div class="carregando">Carregando…</div></main>
+</div>
+<div id="aviso-som" class="aviso-som" hidden><span>O navegador bloqueou o som do spotter.</span><button class="btn pri" data-acao="liberar-som">Liberar som</button></div>
+<script src="app.js"></script>
+</body>
+</html>

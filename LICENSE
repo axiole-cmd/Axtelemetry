@@ -1,0 +1,12 @@
+Licença de uso do Axtel
+Copyright (c) 2026 Leonardo Axiole. Todos os direitos reservados.
+
+1. Você pode baixar, instalar e usar o Axtel de graça, para uso pessoal.
+2. Você pode ler o código-fonte e propor melhorias (issues e pull requests).
+3. Sem autorização por escrito do autor, não é permitido vender o Axtel, redistribuir
+   versões modificadas ou publicar o Axtel com outro nome.
+4. O Axtel é oferecido "como está", sem garantia de nenhum tipo. O autor não se
+   responsabiliza por perda de dados ou qualquer dano causado pelo uso do programa.
+
+Componentes de terceiros mantêm as próprias licenças:
+- testes/vendor/gremlins (gremlins.js, licença MIT; ver o arquivo LICENSE na pasta).

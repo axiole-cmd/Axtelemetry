@@ -1,0 +1,17 @@
+# dados de quem usa (nunca vão para o repositório)
+dados/
+*.db
+*.db-shm
+*.db-wal
+
+# testes
+testes/.dados-teste/
+testes/relatorio/
+
+# gerados
+dist/
+lancador/Axtel.exe
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

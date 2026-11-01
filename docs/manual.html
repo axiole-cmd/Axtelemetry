@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manual do Axtel 1.5</title>
+<style>
+  :root{--fundo:#0D1015;--cartao:#151A21;--borda:#252C36;--texto:#E7EAEE;--fraco:#9AA3AF;--laranja:#FF6A2B}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.6 "Segoe UI",system-ui,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  h1{font-size:34px;margin:0 0 4px;display:flex;align-items:center;gap:12px}
+  h1 i{width:16px;height:24px;background:var(--laranja);transform:skewX(-18deg);display:inline-block}
+  h2{font-size:22px;margin:40px 0 10px;padding-top:16px;border-top:1px solid var(--borda)}
+  h3{font-size:17px;margin:22px 0 6px}
+  p,li{color:#D4D8DE}
+  .sub{color:var(--fraco);margin:0 0 24px}
+  code{font-family:Consolas,ui-monospace,monospace;background:#1B212A;border:1px solid var(--borda);border-radius:5px;padding:1px 6px;font-size:14px}
+  pre{background:#1B212A;border:1px solid var(--borda);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:14px}
+  pre code{border:none;padding:0;background:none}
+  .passo{background:var(--cartao);border:1px solid var(--borda);border-radius:12px;padding:14px 18px;margin:12px 0}
+  .passo b{color:var(--laranja)}
+  table{width:100%;border-collapse:collapse;margin:10px 0}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
+  th{color:var(--fraco);font-weight:600;font-size:13px}
+  .aviso{background:rgba(245,197,66,.08);border:1px solid rgba(245,197,66,.3);border-radius:10px;padding:10px 14px}
+  nav ol{columns:2;padding-left:20px}
+  nav a{color:var(--texto)}
+  @media print{body{background:#fff;color:#111}nav a,h1,h2,h3,b{color:#111}pre{white-space:pre-wrap;word-break:break-all}.sub{color:#555}p,li,td{color:#222}pre,code,.passo{background:#f4f4f4;border-color:#ddd}h2{border-color:#ddd}.passo b{color:#d4500f}}
+  @media (max-width:600px){nav ol{columns:1}}
+</style>
+</head>
+<body>
+<main>
+<h1><i></i>Manual do Axtel 1.5</h1>
+<p class="sub">Telemetria de simuladores: grava cada sessão e cada volta, mostra tudo num painel no navegador e fala com você pela voz do spotter.</p>
+
+<nav><ol>
+  <li><a href="#instalar">Instalar</a></li>
+  <li><a href="#abrir">Abrir e fechar</a></li>
+  <li><a href="#jogos">Ligar cada jogo</a></li>
+  <li><a href="#telas">As telas</a></li>
+  <li><a href="#spotter">Spotter e voz</a></li>
+  <li><a href="#celular">Usar no celular</a></li>
+  <li><a href="#dados">Seus dados e backup</a></li>
+  <li><a href="#problemas">Problemas comuns</a></li>
+</ol></nav>
+
+<h2 id="instalar">1. Instalar</h2>
+<div class="passo"><b>Passo 1 — Baixar.</b> Na página do Axtel no GitHub, em <b>Releases</b>, baixe o <code>Axtel-v1.5.zip</code>.</div>
+<div class="passo"><b>Passo 2 — Extrair.</b> Clique com o botão direito no zip › <b>Extrair tudo</b>. Ou pelo PowerShell:
+<pre><code>Expand-Archive -Path "$env:USERPROFILE\Downloads\Axtel-v1.5.zip" -DestinationPath "$env:USERPROFILE\Downloads" -Force</code></pre></div>
+<div class="passo"><b>Passo 3 — Instalar.</b> Dentro da pasta extraída, dois cliques em <b>Instalar Axtel</b>. Ele copia o Axtel para a sua pasta de usuário, cria os atalhos na Área de Trabalho e no Menu Iniciar e abre o Axtel. Ou pelo PowerShell:
+<pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Axtel\instalar.ps1"</code></pre></div>
+<div class="passo"><b>Passo 4 — Python (automático).</b> Se o PC não tiver Python, o Axtel pergunta se pode instalar. Clique em <b>Sim</b> e espere a próxima mensagem (1 a 5 minutos, precisa de internet). Não pede administrador.</div>
+<div class="aviso">Na primeira vez o Windows pode mostrar "O Windows protegeu o computador": clique em <b>Mais informações › Executar assim mesmo</b>. Isso acontece com programas novos sem assinatura digital.</div>
+<p><b>Sem instalar:</b> também dá para usar direto da pasta extraída, com dois cliques no <code>Axtel.exe</code>.</p>
+<p><b>Desinstalar:</b> Menu Iniciar › Axtel › <b>Desinstalar Axtel</b>, ou em Configurações › Aplicativos. Ele pergunta se você quer guardar o histórico.</p>
+
+<h2 id="abrir">2. Abrir e fechar</h2>
+<p><b>Abrir:</b> dois cliques no atalho <b>Axtel</b> (ou no <code>Axtel.exe</code> dentro da pasta). O Axtel abre sem janela preta e o painel aparece no navegador em <code>http://localhost:8501</code>. Se ele já estiver aberto, o atalho só mostra o painel de novo.</p>
+<p><b>Fechar:</b> em <b>Configurações › Fechar o Axtel</b>. A sessão em andamento fica salva.</p>
+<p><b>Com janela (para ver erros):</b> o arquivo <code>Iniciar Axtel (com janela).bat</code> abre o Axtel do jeito antigo, com a janela preta mostrando o que acontece.</p>
+<p><b>Abrir junto com o Windows:</b> em Configurações, ligue "Abrir junto com o Windows".</p>
+<p>Na primeira vez, o Windows pergunta se o Python pode usar a rede: marque <b>Redes privadas</b> e clique em <b>Permitir</b>. Isso é o que deixa o celular abrir o painel.</p>
+
+<h2 id="jogos">3. Ligar cada jogo</h2>
+<table>
+<tr><th>Jogo</th><th>O que fazer</th></tr>
+<tr><td>AC EVO, Assetto Corsa, ACC</td><td>Nada. É só entrar na pista com o Axtel aberto.</td></tr>
+<tr><td>iRacing</td><td>Já vem ligada. Se não aparecer nada, use <b>Configurações › Telemetria dos jogos › Ajustar automaticamente</b> (confere o <code>app.ini</code>). Os dados só chegam com você dentro do carro na pista, não na garagem.</td></tr>
+<tr><td>Automobilista 2</td><td>No jogo: <b>Opções › Sistema › Memória compartilhada</b> = <b>Project CARS 2</b>, e reinicie o jogo. Essa opção só existe dentro do jogo.</td></tr>
+<tr><td>F1 25</td><td>No jogo: <b>Configurações › Telemetria</b>: Telemetria UDP <b>ligada</b>, transmissão <b>desligada</b>, IP <code>127.0.0.1</code>, porta <code>20777</code>, formato <b>2025</b>, frequência <b>60 Hz</b>. Ou, com o jogo fechado, use <b>Ajustar automaticamente</b> em Configurações.</td></tr>
+<tr><td>Forza Motorsport / Horizon</td><td>No jogo: <b>Configurações › HUD e jogabilidade › Data Out</b> = ligado, IP <code>127.0.0.1</code>, porta <code>5300</code>. No Forza Motorsport, formato <b>Car Dash</b>.</td></tr>
+</table>
+<p>Em <b>Configurações › Telemetria dos jogos</b> o Axtel mostra, jogo por jogo, se está recebendo dados, se o jogo está aberto e o que falta ligar. No iRacing e no F1 25 o botão <b>Ajustar automaticamente</b> muda o arquivo de configuração do jogo por você e guarda uma cópia com final <code>.axtel-bak</code>. As portas do F1 25 e do Forza podem ser trocadas em <b>Configurações</b>. Quando o jogo está mandando dados, o ponto de status embaixo do menu fica <b>verde</b>.</p>
+<div class="aviso">O Forza não manda o nome do carro nem da pista, então as sessões dele aparecem como "carro 1234" e "Pista 12". O iRacing não manda a posição do carro, então não tem traçado.</div>
+
+<h2 id="telas">4. As telas</h2>
+<table>
+<tr><th>Tela</th><th>Para que serve</th></tr>
+<tr><td>Início</td><td>Totais de todos os jogos, tempo por jogo, sessões por semana, últimas sessões e recordes.</td></tr>
+<tr><td>Estatísticas por jogo</td><td>Escolha o jogo pelos botões coloridos e veja carros, pistas, evolução e qualidade da pilotagem.</td></tr>
+<tr><td>Sessões</td><td>Todas as sessões, com filtro por jogo, tipo e data. Clique numa para ver o detalhe.</td></tr>
+<tr><td>Detalhe da sessão</td><td>Voltas, parciais e validade. Escolha a volta de referência na coluna <b>REF</b> e marque quantas quiser em <b>Comparar</b>. Também dá para dizer qual setup foi usado e baixar as voltas em CSV.</td></tr>
+<tr><td>Comparar voltas</td><td>Até 10 voltas no gráfico, cada uma com uma cor. Mostre ou esconda cada informação (traçado, diferença, velocidade, acelerador, freio, marcha) e veja o replay no traçado.</td></tr>
+<tr><td>Calendário</td><td>Seu histórico por data. Dias em verde tiveram melhora (▲ ganho de tempo, ◎ marco, ◆ consistência, ✓ voltas limpas). Clique num dia para ver o resumo e abrir a sessão.</td></tr>
+<tr><td>Setups</td><td>Registre o acerto de cada carro e pista e compare dois lado a lado.</td></tr>
+<tr><td>Desafios e plano</td><td>Metas que o Axtel acompanha sozinho e um plano de treino de 30 minutos montado a partir da sua última sessão.</td></tr>
+<tr><td>Anotações</td><td>Suas anotações e o que falta fazer.</td></tr>
+<tr><td>Ao vivo</td><td>Tudo do carro e da sessão enquanto você corre: posição, volta, tempo restante e diferença para quem está na frente e atrás; volta atual, previsão e parciais; o <b>volante</b> girando com o ângulo e os três pedais; luzes de RPM, marcha, temperaturas do motor; pneus (temperatura e pressão), combustível (consumo e se dá até o fim), condições da pista e o mapa com a sua posição. Cada jogo manda o que tem: o que o jogo não informa aparece como "—". <b>Abrir em janela separada</b> abre só o Ao vivo numa janela sem menu, para arrastar para outro monitor; <b>Tela cheia</b> ocupa a tela toda.</td></tr>
+<tr><td>Spotter</td><td>Tudo sobre a voz (veja abaixo).</td></tr>
+<tr><td>Configurações</td><td>Telemetria de cada jogo, abrir com o Windows, backup, atalhos de teclado, portas e <b>Fechar o Axtel</b>.</td></tr>
+</table>
+
+<h2 id="spotter">5. Spotter e voz</h2>
+<p>O spotter fala o tempo de cada volta e avisa recordes, voltas inválidas, parciais, ritmo, combustível e boxes. Ele espera uma reta para falar. Tudo se ajusta na tela <b>Spotter</b> (ou pelo atalho verde na barra lateral).</p>
+<h3>Voz Beto (ElevenLabs)</h3>
+<p>Em português, o spotter usa a voz <b>Beto</b> da sua conta do ElevenLabs. Para isso, guarde a chave de API no Windows (troque o texto entre aspas pela sua chave; ela fica só no seu PC):</p>
+<pre><code>setx ELEVENLABS_API_KEY "cole-sua-chave-aqui"</code></pre>
+<p>Feche e abra o Axtel depois. Cada frase gerada fica guardada no PC e toca de graça nas próximas vezes. As vozes em inglês e espanhol ainda não foram escolhidas: quando escolher, cole o ID da voz na tela Spotter. Sem chave, sem internet ou sem voz escolhida, o spotter usa a voz do navegador.</p>
+<h3>Atalhos durante a corrida</h3>
+<p><code>F9</code> repete o último aviso, <code>F10</code> silencia por 1 volta e <code>Ctrl + F10</code> liga ou desliga. Eles vêm <b>desligados</b>, porque enquanto estão ligados o jogo não recebe essas teclas. Ligue em Configurações.</p>
+<p>Os navegadores só tocam som depois do primeiro clique na página: clique em <b>Testar voz</b> uma vez ao abrir o painel.</p>
+
+<h2 id="celular">6. Usar no celular</h2>
+<p>Com o celular no mesmo Wi-Fi do PC, abra no navegador do celular o endereço que aparece na tela <b>Ao vivo</b> (algo como <code>http://192.168.0.10:8501</code>).</p>
+
+<h2 id="dados">7. Seus dados e backup</h2>
+<p>Instalado pelo <b>Instalar Axtel</b>, a pasta do Axtel fica em <code>%LOCALAPPDATA%\Programs\Axtel</code>. Para abrir essa pasta, rode no PowerShell:</p>
+<pre><code>explorer "$env:LOCALAPPDATA\Programs\Axtel"</code></pre>
+<table>
+<tr><th>Onde</th><th>O quê</th></tr>
+<tr><td><code>Axtel\dados\axtel.db</code></td><td>Todas as sessões, voltas, setups, desafios e anotações.</td></tr>
+<tr><td><code>Axtel\dados\backups\</code></td><td>Um backup por dia (os últimos 14, ajustável em Configurações).</td></tr>
+<tr><td><code>Axtel\dados\voz\</code></td><td>As frases do spotter já geradas pelo ElevenLabs.</td></tr>
+<tr><td><code>Axtel\dados\axtel.log</code></td><td>Registro do que o Axtel fez (útil para achar erros).</td></tr>
+<tr><td><code>Axtel\dados\relatorios\</code></td><td>Pacotes criados em "Relatar um problema".</td></tr>
+</table>
+<p>Para atualizar para uma versão nova: baixe o zip novo e rode o <b>Instalar Axtel</b> de novo. Ele fecha o Axtel, troca os arquivos e não mexe na pasta <code>dados</code>.</p>
+
+<h2 id="problemas">8. Problemas comuns</h2>
+<table>
+<tr><th>O que acontece</th><th>O que fazer</th></tr>
+<tr><td>Recusei a instalação do Python</td><td>Abra o Axtel de novo e clique em Sim, ou instale o Python 3.12 pelo python.org marcando "Add python.exe to PATH".</td></tr>
+<tr><td>"O Windows protegeu o computador"</td><td>Mais informações › Executar assim mesmo.</td></tr>
+<tr><td>O ponto de status fica amarelo com o jogo aberto</td><td>Entre na pista (no menu do jogo não há telemetria). No AMS2, F1 25 e Forza, confira a seção 3.</td></tr>
+<tr><td>iRacing ou AMS2 abertos e nada no Ao vivo</td><td>Abra <b>Configurações › Telemetria dos jogos</b>. Se aparecer "o Windows bloqueou", o jogo está rodando como administrador: feche o Axtel e abra com botão direito › <b>Executar como administrador</b>.</td></tr>
+<tr><td>ACC lê os dados mas não guarda a sessão</td><td>O Axtel só guarda sessões com pelo menos uma volta completa (passar pela linha de chegada duas vezes depois de sair dos boxes).</td></tr>
+<tr><td>A janela do Ao vivo não abre</td><td>O navegador bloqueou o pop-up: permita pop-ups para <code>localhost:8501</code>.</td></tr>
+<tr><td>O ponto fica vermelho</td><td>Clique nele, descreva o problema em "Relatar um problema" e mande o arquivo .zip gerado.</td></tr>
+<tr><td>O celular não abre o painel</td><td>Mesmo Wi-Fi? Na primeira vez o Windows pergunta sobre a rede: permita em Redes privadas.</td></tr>
+<tr><td>O spotter não fala / aviso "O navegador bloqueou o som"</td><td>Clique em <b>Liberar som</b> no aviso (ou em qualquer lugar do painel): o Axtel libera o som e fala "Som liberado". Confira também se o spotter está ligado.</td></tr>
+<tr><td>"Porta ocupada" para F1 25 ou Forza</td><td>Outro programa usa a porta. Troque em Configurações e use a mesma porta no jogo.</td></tr>
+</table>
+</main>
+</body>
+</html>
